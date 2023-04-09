@@ -32,3 +32,11 @@ class Test_Form():
         self.forms.click_submit_button()
         assert self.forms.email_is_visible()==False
         assert self.forms.password_is_visible()==False
+        
+    def test_textarea_comment_value_validation(self):
+        
+        key="Test text value"
+        self.forms.send_textarea_value(key)
+        self.forms.click_submit_button()
+        assert key == self.forms.get_textarea_value()
+        

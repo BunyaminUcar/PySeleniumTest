@@ -12,9 +12,11 @@ class Form_Page(PageBase):
     FORM_PAGE_TİTLE=(By.XPATH,"/html/body/div/h1")    
     EMAİL_AREA=(By.XPATH,"//input[@type='text' and @name='username']")
     PASSWORD_AREA=(By.XPATH,"//input[@type='password']")
+    TEXTAREA=(By.XPATH,"//textarea[@name='comments']")
     SUBMIT_BUTTON=(By.XPATH,"//input[@type='submit']")
     VALUE_USERNAME=(By.XPATH,"//*[@id='_valueusername']")
     VALUE_PASSWORD=(By.XPATH,"//*[@id='_valuepassword']")   
+    VALUE_TEXTAREA=(By.XPATH,"//*[@id='_valuecomments']")
     
     
     def __init__(self, driver):
@@ -53,3 +55,11 @@ class Form_Page(PageBase):
         except:
             result = False
         return result
+
+    def get_textarea_value(self):
+        return self.driver.find_element(*Form_Page.VALUE_TEXTAREA).text
+
+    def send_textarea_value(self,key):
+        self.driver.find_element(*Form_Page.TEXTAREA).clear()
+        self.driver.find_element(*Form_Page.TEXTAREA).send_keys(key)
+        
