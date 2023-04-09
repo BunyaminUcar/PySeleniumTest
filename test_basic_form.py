@@ -40,3 +40,12 @@ class Test_Form():
         self.forms.click_submit_button()
         assert key == self.forms.get_textarea_value()
         
+    def test_checkbox_items_is_selected(self):
+        checkbox1,checkbox2,checkbox3=self.forms.checkbox_select()
+        self.forms.if_checkbox_is_not_selected_then_click(checkbox1)
+        self.forms.if_checkbox_is_not_selected_then_click(checkbox2)
+        self.forms.if_checkbox_is_not_selected_then_click(checkbox3)
+        assert checkbox3.is_selected()==True       
+        assert checkbox2.is_selected()==True   
+        assert checkbox1.is_selected()==True   
+        

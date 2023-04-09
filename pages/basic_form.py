@@ -17,8 +17,10 @@ class Form_Page(PageBase):
     VALUE_USERNAME=(By.XPATH,"//*[@id='_valueusername']")
     VALUE_PASSWORD=(By.XPATH,"//*[@id='_valuepassword']")   
     VALUE_TEXTAREA=(By.XPATH,"//*[@id='_valuecomments']")
-    
-    
+    CHECK_BOX1=(By.XPATH,"//input[@type='checkbox' and @value='cb1']")
+    CHECK_BOX2=(By.XPATH,"//input[@type='checkbox' and @value='cb2']")
+    CHECK_BOX3=(By.XPATH,"//input[@type='checkbox' and @value='cb3']")
+
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
@@ -62,4 +64,12 @@ class Form_Page(PageBase):
     def send_textarea_value(self,key):
         self.driver.find_element(*Form_Page.TEXTAREA).clear()
         self.driver.find_element(*Form_Page.TEXTAREA).send_keys(key)
+    def checkbox_select(self):
+        return self.driver.find_element(By.XPATH,"//input[@type='checkbox' and @value='cb1']"),self.driver.find_element(By.XPATH,"//input[@type='checkbox' and @value='cb2']"),self.driver.find_element(By.XPATH,"//input[@type='checkbox' and @value='cb3']")
+          
+    def if_checkbox_is_not_selected_then_click(self,checkbox):
+       
+        if checkbox.is_selected()==False:
+            checkbox.click()
         
+            
