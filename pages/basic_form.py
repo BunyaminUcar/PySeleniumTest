@@ -65,10 +65,9 @@ class Form_Page(PageBase):
         self.driver.find_element(*Form_Page.TEXTAREA).clear()
         self.driver.find_element(*Form_Page.TEXTAREA).send_keys(key)
     def checkbox_select(self):
-        return self.driver.find_element(By.XPATH,"//input[@type='checkbox' and @value='cb1']"),self.driver.find_element(By.XPATH,"//input[@type='checkbox' and @value='cb2']"),self.driver.find_element(By.XPATH,"//input[@type='checkbox' and @value='cb3']")
+        return self.driver.find_element(*Form_Page.CHECK_BOX1),self.driver.find_element(*Form_Page.CHECK_BOX2),self.driver.find_element(*Form_Page.CHECK_BOX3)
           
     def if_checkbox_is_not_selected_then_click(self,checkbox):
-       
         if checkbox.is_selected()==False:
             checkbox.click()
         
