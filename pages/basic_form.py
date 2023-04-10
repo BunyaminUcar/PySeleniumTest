@@ -20,7 +20,9 @@ class Form_Page(PageBase):
     CHECK_BOX1=(By.XPATH,"//input[@type='checkbox' and @value='cb1']")
     CHECK_BOX2=(By.XPATH,"//input[@type='checkbox' and @value='cb2']")
     CHECK_BOX3=(By.XPATH,"//input[@type='checkbox' and @value='cb3']")
-
+    RADIO_BUTTON1=(By.XPATH,"//input[@type='radio' and @value='rd1']")
+    RADIO_BUTTON2=(By.XPATH,"//input[@type='radio' and @value='rd2']")
+    RADIO_BUTTON3=(By.XPATH,"//input[@type='radio' and @value='rd3']")
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
@@ -41,6 +43,9 @@ class Form_Page(PageBase):
     def get_password_value(self):
         return self.driver.find_element(*Form_Page.VALUE_PASSWORD).text
 
+    def radio_select(self):
+        return self.driver.find_element(*Form_Page.RADIO_BUTTON1),self.driver.find_element(*Form_Page.RADIO_BUTTON2),self.driver.find_element(*Form_Page.RADIO_BUTTON3)
+    
     def email_is_visible(self): 
         wait = WebDriverWait(self.driver, 1)
         try:
@@ -49,6 +54,7 @@ class Form_Page(PageBase):
         except:
             result = False
         return result
+    
     def password_is_visible(self): 
         wait = WebDriverWait(self.driver, 1)
         try:
@@ -71,4 +77,7 @@ class Form_Page(PageBase):
         if checkbox.is_selected()==False:
             checkbox.click()
         
-            
+    def if_radio_button_is_not_selected_then_click(self,radio):
+        
+        if radio.is_selected()==False:
+            radio.click()

@@ -48,4 +48,11 @@ class Test_Form():
         assert checkbox3.is_selected()==True       
         assert checkbox2.is_selected()==True   
         assert checkbox1.is_selected()==True   
-        
+    def  test_radio_items_is_selected(self):
+        radio1,radio2,radio3=self.forms.radio_select()
+        self.forms.if_radio_button_is_not_selected_then_click(radio1)
+        assert radio1.is_selected()==True
+        self.forms.if_radio_button_is_not_selected_then_click(radio2)
+        assert radio2.is_selected()==True
+        self.forms.if_radio_button_is_not_selected_then_click(radio3)
+        assert radio3.is_selected()==True
