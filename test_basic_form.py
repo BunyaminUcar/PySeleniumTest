@@ -56,3 +56,19 @@ class Test_Form():
         assert radio2.is_selected()==True
         self.forms.if_radio_button_is_not_selected_then_click(radio3)
         assert radio3.is_selected()==True
+        
+    def test_multiple_selected_value_control(self):
+        """//option[@value='ms1']"""
+        """//*[@id='_valuemultipleselect0']"""
+        ms1,ms2,ms3,ms4=self.forms.get_m_s_value()
+        self.forms.if_multiple_select_is_not_selected_then_click(ms1)
+        self.forms.if_multiple_select_is_not_selected_then_click(ms2)
+        self.forms.if_multiple_select_is_not_selected_then_click(ms3)
+        self.forms.if_multiple_select_is_not_selected_then_click(ms4)
+        self.forms.click_submit_button()
+        assert self.driver.find_element(By.XPATH,"//*[@id='_valuemultipleselect0']").text=="ms1"
+        assert self.driver.find_element(By.XPATH,"//*[@id='_valuemultipleselect1']").text=="ms2"
+        assert self.driver.find_element(By.XPATH,"//*[@id='_valuemultipleselect2']").text=="ms3"
+        assert self.driver.find_element(By.XPATH,"//*[@id='_valuemultipleselect3']").text=="ms4"
+        
+        

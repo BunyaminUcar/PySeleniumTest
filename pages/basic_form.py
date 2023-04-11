@@ -81,3 +81,11 @@ class Form_Page(PageBase):
         
         if radio.is_selected()==False:
             radio.click()
+    def get_m_s_value(self):
+        return self.driver.find_element(By.XPATH,"//option[@value='ms1']"),self.driver.find_element(By.XPATH,"//option[@value='ms2']"),self.driver.find_element(By.XPATH,"//option[@value='ms3']"),self.driver.find_element(By.XPATH,"//option[@value='ms4']")
+    
+            
+    def if_multiple_select_is_not_selected_then_click(self,ms):
+        
+        if ms.is_selected()==False:
+            ms.click()
