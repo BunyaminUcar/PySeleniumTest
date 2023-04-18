@@ -10,6 +10,8 @@ class Alert_Page(PageBase):
     SİMPLE_ALERT = (By.XPATH, "//*[@id='alertexamples']")
     CONFİRM_BOX_ALERT = (By.XPATH, "//*[@id='confirmexample']")
     CONFİRM_BOX_VARİABLE = (By.XPATH, "//*[@id='confirmreturn']")
+    PROMPT_BOX_VARİABLE = (By.XPATH, "//*[@id='promptreturn']")
+    PROMPT_BOX_BUTTON = (By.XPATH, "//*[@id='promptexample']")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -32,3 +34,12 @@ class Alert_Page(PageBase):
 
     def confirm_box_variable(self):
         return self.driver.find_element(*Alert_Page.CONFİRM_BOX_VARİABLE).text
+
+    def prompt_box_button_click(self):
+        self.driver.find_element(*Alert_Page.PROMPT_BOX_BUTTON).click()
+
+    def send_keys_to_prompt_box(self, key):
+        self.driver.switch_to.alert.send_keys(key)
+
+    def prompt_box_variable(self):
+        return self.driver.find_element(*Alert_Page.PROMPT_BOX_VARİABLE).text

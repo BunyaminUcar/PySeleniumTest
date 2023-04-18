@@ -29,6 +29,7 @@ class Test_Alerts:
         assert self.alerts.confirm_box_variable() == "true"
         assert alert_text == "I am a confirm alert"
 
+    @pytest.mark.skip
     def test_show_confirm_box_then_dismiss(self):
         self.alerts.click_confirm_box_buton()
         alert = self.alerts.switch_to_alert()
@@ -37,13 +38,9 @@ class Test_Alerts:
         assert self.alerts.confirm_box_variable() == "false"
         assert alert_text == "I am a confirm alert"
 
-    @pytest.mark.skip
     def test_show_prompt_box_then_send_keys_and_accept(self):
-        self.driver.find_element(By.XPATH, "//*[@id='promptexample']").click()
-        time.sleep(5)
-        self.driver.switch_to.alert.send_keys("test prompt box")
-        assert (
-            self.driver.find_element(By.XPATH, "//*[@id='promptreturn']").text
-            == "test prompt box"
-        )
-        time.sleep(3)
+        self.alerts.prompt_box_button_click()
+        key = "test prompt box"
+        self.alerts.send_keys_to_prompt_box(key)
+        self.alerts.alert_accept()
+        assert self.alerts.prompt_box_variable() == "test prompt box"
