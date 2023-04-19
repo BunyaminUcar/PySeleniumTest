@@ -2,7 +2,6 @@ import time
 import pytest
 from selenium.webdriver.common.by import By
 from pages.alerts import Alert_Page
-from pages.basic_form import Form_Page
 
 
 @pytest.mark.usefixtures("setup")
