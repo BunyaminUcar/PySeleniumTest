@@ -22,7 +22,7 @@ class Calculator(PageBase):
     def send_second_value(self, value):
         self.driver.find_element(*Calculator.SECOND_VALUE).send_keys(value)
 
-    def select_addition(self, key):
+    def select_calculation_method(self, key):
         dropdownlist = self.driver.find_element(*Calculator.DROP_DOWN_LIST)
         dropdownlist = Select(dropdownlist)
         dropdownlist.select_by_visible_text(key)
