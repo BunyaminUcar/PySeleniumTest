@@ -1,8 +1,4 @@
-import time
 import pytest
-from selenium.webdriver.common.by import By
-
-
 from pages.calculator import Calculator
 
 
@@ -16,7 +12,7 @@ class Test_Calculator:
     def test_plus_function_with_integer_values(self):
         self.calculator.send_first_value("5")
         self.calculator.send_second_value("-2")
-        self.calculator.select_addition("plus")
+        self.calculator.select_calculation_method("plus")
         self.calculator.click_calculate_button()
         result = self.calculator.give_result()
         assert result == "3"
@@ -24,7 +20,7 @@ class Test_Calculator:
     def test_plus_function_with_one_integer_values(self):
         self.calculator.send_first_value("5")
         self.calculator.send_second_value("")
-        self.calculator.select_addition("plus")
+        self.calculator.select_calculation_method("plus")
         self.calculator.click_calculate_button()
         result = self.calculator.give_result()
         assert result == "ERR"
@@ -32,7 +28,7 @@ class Test_Calculator:
     def test_plus_function_with_one_String_values(self):
         self.calculator.send_first_value("abc")
         self.calculator.send_second_value("xyz")
-        self.calculator.select_addition("plus")
+        self.calculator.select_calculation_method("plus")
         self.calculator.click_calculate_button()
         result = self.calculator.give_result()
         assert result == "ERR"
@@ -40,7 +36,7 @@ class Test_Calculator:
     def test_times_function_with_two_integer_values(self):
         self.calculator.send_first_value("16")
         self.calculator.send_second_value("2")
-        self.calculator.select_addition("times")
+        self.calculator.select_calculation_method("times")
         self.calculator.click_calculate_button()
         result = self.calculator.give_result()
         assert result == "32"
@@ -48,7 +44,7 @@ class Test_Calculator:
     def test_times_function_with_two_string_values(self):
         self.calculator.send_first_value("abc")
         self.calculator.send_second_value("xyz")
-        self.calculator.select_addition("times")
+        self.calculator.select_calculation_method("times")
         self.calculator.click_calculate_button()
         result = self.calculator.give_result()
         assert result == "ERR"
@@ -56,7 +52,7 @@ class Test_Calculator:
     def test_minus_function_with_two_integer_values(self):
         self.calculator.send_first_value("64")
         self.calculator.send_second_value("16")
-        self.calculator.select_addition("minus")
+        self.calculator.select_calculation_method("minus")
         self.calculator.click_calculate_button()
         result = self.calculator.give_result()
         assert result == "48"
@@ -64,7 +60,7 @@ class Test_Calculator:
     def test_minus_function_with_two_string_values(self):
         self.calculator.send_first_value("abc")
         self.calculator.send_second_value("xyz")
-        self.calculator.select_addition("minus")
+        self.calculator.select_calculation_method("minus")
         self.calculator.click_calculate_button()
         result = self.calculator.give_result()
         assert result == "ERR"
@@ -72,7 +68,7 @@ class Test_Calculator:
     def test_divide_function_with_two_ingeter_values(self):
         self.calculator.send_first_value("64")
         self.calculator.send_second_value("16")
-        self.calculator.select_addition("divde")
+        self.calculator.select_calculation_method("divde")
         self.calculator.click_calculate_button()
         result = self.calculator.give_result()
         assert result == "4"
@@ -80,7 +76,7 @@ class Test_Calculator:
     def test_divide_function_with_two_ingeter_values(self):
         self.calculator.send_first_value("abc")
         self.calculator.send_second_value("xyz")
-        self.calculator.select_addition("divide")
+        self.calculator.select_calculation_method("divide")
         self.calculator.click_calculate_button()
         result = self.calculator.give_result()
         assert result == "ERR"
