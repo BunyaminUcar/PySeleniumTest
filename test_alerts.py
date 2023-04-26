@@ -11,7 +11,6 @@ class Test_Alerts:
         self.driver.get("https://testpages.herokuapp.com/styled/alerts/alert-test.html")
         self.alerts = Alert_Page(self.driver)
 
-    @pytest.mark.skip
     def test_simple_alert_box(self):
         self.alerts.click_simple_alert_buton()
         alert = self.alerts.switch_to_alert()
@@ -19,7 +18,6 @@ class Test_Alerts:
         self.alerts.alert_accept()
         assert alert_text == "I am an alert box!"
 
-    @pytest.mark.skip
     def test_show_confirm_box_then_accept(self):
         self.alerts.click_confirm_box_buton()
         alert = self.alerts.switch_to_alert()
@@ -28,7 +26,6 @@ class Test_Alerts:
         assert self.alerts.confirm_box_variable() == "true"
         assert alert_text == "I am a confirm alert"
 
-    @pytest.mark.skip
     def test_show_confirm_box_then_dismiss(self):
         self.alerts.click_confirm_box_buton()
         alert = self.alerts.switch_to_alert()
